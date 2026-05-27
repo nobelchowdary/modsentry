@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "modsentry",
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Mop comments",
+        "description": "Remove this comment and all child comments.",
+        "location": "comment",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/mop-comment"
+      },
+      {
+        "label": "Mop post comments",
+        "description": "Remove all comments of this post.",
+        "location": "post",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/mop-post"
+      },
+      {
+        "label": "🔍 ModSentry: Fingerprint this user",
+        "description": "Capture a behavioral fingerprint for ban-evasion detection.",
+        "location": "comment",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/fingerprint-user"
+      },
+      {
+        "label": "🔍 ModSentry: Fingerprint this user",
+        "description": "Capture a behavioral fingerprint for ban-evasion detection.",
+        "location": "post",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/fingerprint-user"
+      },
+      {
+        "label": "📊 ModSentry Dashboard",
+        "description": "Open the ModSentry mod dashboard.",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/open-dashboard"
+      },
+      {
+        "label": "🔗 ModSentry: Create shared registry",
+        "description": "Create a new shared fingerprint registry for this mod team.",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/create-registry"
+      },
+      {
+        "label": "🔗 ModSentry: Join shared registry",
+        "description": "Join an existing shared fingerprint registry.",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/join-registry"
+      },
+      {
+        "label": "🚪 ModSentry: Leave shared registry",
+        "description": "Leave the current shared fingerprint registry.",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/leave-registry"
+      }
+    ]
+  },
+  "forms": {
+    "mopComment": "/internal/form/mop-comment-submit",
+    "mopPost": "/internal/form/mop-post-submit",
+    "joinRegistry": "/internal/form/join-registry-submit"
+  },
+  "triggers": {
+    "onAppInstall": "/internal/triggers/on-app-install",
+    "onModAction": "/internal/triggers/on-mod-action",
+    "onCommentCreate": "/internal/triggers/on-comment-submit",
+    "onPostCreate": "/internal/triggers/on-post-submit",
+    "onModMail": "/internal/triggers/on-mod-mail"
+  },
+  "scheduler": {
+    "tasks": {
+      "dailyStatsAggregation": {
+        "endpoint": "/internal/scheduler/daily-stats",
+        "cron": "0 0 * * *"
+      }
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "permissions": {
+    "reddit": true,
+    "redis": true
+  }
+}
