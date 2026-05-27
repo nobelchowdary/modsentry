@@ -2,6 +2,8 @@
 
 Ban-evasion and repeat-offender detection for Reddit moderators, built on the [Devvit](https://developers.reddit.com/) platform.
 
+**[➜ Install ModSentry from the Reddit App Directory](https://developers.reddit.com/apps/modsentry)**
+
 ## What it does
 
 When a mod bans a user, ModSentry automatically captures a behavioral and stylometric fingerprint of that user. Every new commenter or poster is then silently scored against fingerprints of previously banned users. When a match is found, the mod team receives an Evidence Card in modmail explaining in plain English why the account looks like a banned user.
